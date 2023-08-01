@@ -155,7 +155,6 @@ dist
 
 ### NuxtJS ###
 # Generated dirs
-.nuxt
 .nuxt-*
 .output
 .gen
