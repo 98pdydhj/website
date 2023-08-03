@@ -197,5 +197,9 @@ node_modules
 # comment the following lines
 !.yarn/cache
 
+# local ssl cert and key
+/localhost.pem
+/localhost-key.pem
+
 # and uncomment the following lines
 # .pnp.*

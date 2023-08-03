@@ -1,18 +1,24 @@
 export default defineNuxtConfig({
-  modules: [
-    [
-      '@storyblok/nuxt',
-      {
-        accessToken: 'OurklwV5XsDJTIE1NJaD2wtt',
-        // apiOptions: {
-        //   region: "us" // When creating your space in US region (EU default)
-        // }
-      },
-    ],
-  ],
-  app: {
-    head: {
-      script: [{ src: 'https://cdn.tailwindcss.com' }],
-    },
-  },
+	modules: [
+		[
+			'@storyblok/nuxt',
+			{
+				accessToken: 'VxBtQrfsVw2i2BOPxKposQtt',
+				apiOptions: {
+					region: "eu" // Hard coded EU for safety 🙂
+				}
+			},
+		],
+	],
+	app: {
+		head: {
+			script: [{ src: 'https://cdn.tailwindcss.com' }],
+		},
+	},
+	server: {
+		https: {
+			key: "server.key",
+			cert: "server.crt"
+		}
+	}
 });
