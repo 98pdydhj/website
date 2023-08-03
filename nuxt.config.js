@@ -14,11 +14,5 @@ export default defineNuxtConfig({
 		head: {
 			script: [{ src: 'https://cdn.tailwindcss.com' }],
 		},
-	},
-	server: {
-		https: {
-			key: "server.key",
-			cert: "server.crt"
-		}
 	}
 });
