@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"local dev": "./startup_dev.sh",
+		"localDev": "./startup_dev.sh",
 		"dev" : "nuxi dev",
 		"build": "nuxi build",
 		"start": "node .output/server/index.mjs"
