@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "./startup_dev.sh",
+		"cloud dev" : "nuxi dev",
 		"build": "nuxi build",
 		"start": "node .output/server/index.mjs"
 	},
