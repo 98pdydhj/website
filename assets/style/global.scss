@@ -1,0 +1,76 @@
+@mixin font-face($family, $file, $path, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $family;
+		src: url($path + $file + '.ttf') format('opentype');
+		src: url($path + $file + '.woff2') format('woff2');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@function headings($from:1, $to:6) {
+    @if $from == $to {
+        @return 'h#{$from}';
+    } @else {
+        @return 'h#{$from},' + headings($from+1, $to);
+    }
+}
+
+@include font-face('agno3dr', 'agno3dr', '/fonts/');
+@include font-face('opensans', 'opensans-regular', '/fonts/');
+@include font-face('opensans', 'opensans-light', '/fonts/', 300);
+@include font-face('opensans', 'opensans-bold', '/fonts/', 700);
+@include font-face('opensans', 'opensans-bold-italic', '/fonts/', 700, italic);
+@include font-face('opensans', 'opensans-extra-bold', '/fonts/', 800);
+@include font-face('opensans', 'opensans-italic', '/fonts/', normal, italic);
+
+*, .font-os {
+	font-family: opensans, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+#{headings(1,6)}, .font-a3 {
+	font-family: agno3dr, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+// Viewport fix for site root elements
+.viewport-100-fix {
+	width: 100%;
+	width: -moz-available;          /* WebKit-based browsers will ignore this. */
+	width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+	width: stretch;
+
+	height: 100%;
+	height: -moz-available;          /* WebKit-based browsers will ignore this. */
+	height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+	height: stretch;
+}
+
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}
+
+h1 {
+	font-size: 4.5rem; /* 96px */
+	line-height: 1;
+}
+
+h2 {
+	font-size: 3.75rem; /* 60px */
+	line-height: 1;
+}
+
+h3 {
+	font-size: 2.25rem; /* 36px */
+	line-height: 2.5rem; /* 40px */
+}
+
+
+
+
+
