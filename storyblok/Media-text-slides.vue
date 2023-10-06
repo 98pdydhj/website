@@ -4,7 +4,7 @@
 		class="relative flex flex-col md:flex-row w-full min-h-[70vh] md:h-1 md:h-min-[50vh] md:p-5"
 		:class="direction == 'rtl' ? 'md:flex-row-reverse' : 'md:flex-row'"
 	>
-		<div class="flex flex-row justify-center items-center w-full md:w-[45%] md:w-[47%] h-[35vh] md:h-full overflow-hidden card rounded-none md:rounded-lg p-0">
+		<div class="flex flex-row justify-center items-center w-full md:w-[45%] lg:w-[47%] h-[35vh] md:h-full overflow-hidden card rounded-none md:rounded-lg p-0">
 			<nuxt-img
 				:src="currentlySelectedSlide.media.filename"
 				format="webp"
