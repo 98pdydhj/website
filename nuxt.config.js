@@ -64,6 +64,7 @@ export default defineNuxtConfig({
 	},
 	postcss: {
 		plugins: {
+			'postcss-import': {}, 
 			tailwindcss: {},
 			autoprefixer: {},
 		},
