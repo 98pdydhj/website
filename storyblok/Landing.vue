@@ -1,5 +1,5 @@
 <template>
-	<div v-editable="blok" data-test="landing" class="w-full h-[85vh] md:h-[90vh]" :style="'background-color: ' + blok.bg_color || '#ffffff'">
+	<div v-editable="blok" data-test="landing" class="w-full h-[85vh] md:h-[90vh]" :style="'background-color: ' + blok.bg_color.color || '#ffffff'">
 		<div class="flex flex-col md:flex-row w-full h-full">
 			<div class="flex flex-col content-bottom min-h-[65%] w-full md:h-full md:w-1/2 px-5 pt-5">
 				<nuxt-img

@@ -1,7 +1,7 @@
 <template>
 	<div
 		v-editable="blok"
-		class="flex w-full min-h-[50vh] md:h-[50vh] shadow-md"
+		class="flex w-full h-[50vh] md:h-[50vh] overflow-hidden shadow-md"
 		:style="{
 			'background-color' : blok.bg_color.color || '#e3000f',
 		}"
@@ -9,16 +9,18 @@
 		<div
 			class="relative grid w-full hero-image-inset-parent"
 		>
-			<nuxt-img
-				v-if="blok.media"
-				:src="blok.media.filename"
-				:format="blok.media.filename.split('.').at(-1) == 'svg' ? 'svg' : 'webp'"
-				fit="in"
-				:modifiers="{ smart: true }"
-				sizes="md:600px lg:800px xl:1100px"
-				class="hero-image-inset hero-image-inset-childs w-full h-full"
-				:class="blok.bg_grayscale ? 'grayscale' : ''"
-			/>
+			<div class="overflow-hidden hero-image-inset-childs w-full h-full">
+				<nuxt-img
+					v-if="blok.media"
+					:src="blok.media.filename"
+					:format="blok.media.filename.split('.').at(-1) == 'svg' ? 'svg' : 'webp'"
+					fit="in"
+					:modifiers="{ smart: true }"
+					sizes="md:600px lg:800px xl:1100px"
+					class="object-cover w-full h-full"
+					:class="blok.bg_grayscale ? 'grayscale' : ''"
+				/>
+			</div>
 			<div
 				class="hero-image-inset-cover hero-image-inset-childs flex flex-col justify-center item-center text-center p-5"
 				:style="{
@@ -61,10 +63,6 @@
 	.hero-image-inset-childs {
 		grid-column: 1;
 		grid-row: 1;
-	}
-
-	.hero-image-inset {
-		object-fit: cover;
 	}
 
 	.hero-image-inset-cover {

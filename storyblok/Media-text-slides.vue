@@ -1,10 +1,12 @@
 <template>
 	<div
 		v-editable="blok"
-		class="relative flex flex-col md:flex-row w-full min-h-[70vh] md:h-1 md:h-min-[50vh] md:p-5"
+		class="relative grid grid-cols-1 grid-rows-8 md:grid-cols-11 md:ap-3 md:grid-rows-1 w-full h-[80vh] md:h-[60vh] md:p-5"
 		:class="direction == 'rtl' ? 'md:flex-row-reverse' : 'md:flex-row'"
 	>
-		<div class="flex flex-row justify-center items-center w-full md:w-[45%] lg:w-[47%] h-[35vh] md:h-full overflow-hidden card rounded-none md:rounded-lg p-0">
+		<div
+			class="row-start-1 row-span-4 col-span-full md:row-span-full md:row-start-1 md:col-span-5 flex flex-row justify-center items-center w-full h-[40vh] md:h-full overflow-hidden card rounded-none md:rounded-lg p-0 shadow-none md:shadow-lg"
+		>
 			<nuxt-img
 				:src="currentlySelectedSlide.media.filename"
 				format="webp"
@@ -15,27 +17,28 @@
 				preload
 			/>
 		</div>
-		<div class="absolute md:static flex flex-row justify-center
-			items-center gap-1 md:flex-col md:w-[10%] lg:w-[7%]
-			left-1/2 top-[70vh] center-axis-xy rounded-lg md:rounded-none md:ml-5 md:mr-5
+		<div class="row-start-5 col-span-full md:row-span-full md:row-start-1 md:col-start-6 md:col-span-1 flex flex-row justify-center
+			items-center gap-1 md:flex-col h-[10%] w-full md:h-full
+			rounded-lg md:rounded-none z-40
 		">
 			<div
 				v-editable="slide"
-				class="p-3 card rounded-full"
+				class="flex flex-col justify-center p-3 card w-[4rem] h-[4rem] xl:w-[6rem] xl:h-[6rem] rounded-full text-center"
 				v-for="slide in slides"
 				@click="setCurrentlySelectedSlide(slide)"
 				:class="slide == currentlySelectedSlide ? 'shadow-xl' : 'shadow-md'"
 			>
 				<font-awesome-icon
 					:icon="slide.icon.type + ' ' + slide.icon.icon"
-					class="text-3xl md:text-6xl"
+					class="block text-4xl md:text-6xl"
 					:class="slide == currentlySelectedSlide ? '' : 'invert-icon'"
 				/>
 			</div>
 		</div>
-		<div class="w-full md:w-[45%] lg:w-[46%] min-h-[50%]  md:min-h-full card rounded-none md:rounded-lg">
-			<div class="flex flex-col w-full min-h-full justify-start md:justify-center mt-[10%] md:mt-0 p-3 md:p-10" v-html="currentlyDisplayedText"></div>
+		<div class="row-start-5 row-span-4 col-span-full md:row-span-full md:row-start-1 md:col-start-7 md:col-span-5 w-full h-[40vh] md:h-full card rounded-none md:rounded-lg overflow-scroll shadow-none md:shadow-lg">
+			<div class="flex flex-col w-full min-h-full justify-center p-3 md:p-10" v-html="currentlyDisplayedText"></div>
 		</div>
+		<div class="row-start-5 row-span-4 col-span-full md:row-span-full md:row-start-1 md:col-start-7 md:col-span-5 w-full h-[40vh] md:h-full rounded-none md:rounded-lg text-fade" />
 	</div>
 </template>
 
@@ -56,16 +59,14 @@
 
 	const setCurrentlySelectedSlide = (slide) => {
 		currentlySelectedSlide.value = slide;
+		console.log(JSON.stringify(slide));
 	}
 </script>
 
 <style lang="scss">
-	.center-axis-xy {
-		transform: translate(-50%,-37.5vh);
-
-		@media (min-width: 768px) {
-			transform: none;
-		}
+	.text-fade {
+		background:linear-gradient(white 5%, transparent 15%, transparent 85%, white 95%);
+		pointer-events: none;
 	}
 
 	.invert-icon {
